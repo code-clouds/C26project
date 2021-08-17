@@ -1,4 +1,4 @@
-class PlayerArcher {
+class ComputerArcher {
     constructor(x, y, width, height) {
       const options = {
         isStatic: true
@@ -8,27 +8,17 @@ class PlayerArcher {
       this.width = width;
       this.height = height;
       //this.collapse = false;
-      this.image = loadImage("./assets/playerArcher.png");
+      this.image = loadImage("./assets/computerArcher.png");
   
       World.add(world, this.body);
   
-      Matter.Body.setAngle(this.body, -PI / 2); // -90 degree
+      Matter.Body.setAngle(this.body, PI / 2); // -90 degree
     }
   
     display() {
       var pos = this.body.position;
       var angle = this.body.angle;
-      
-      if (keyIsDown(DOWN_ARROW) && angle < -1.2) {
-        angle += 0.01;
-        Matter.Body.setAngle(this.body, angle);
-      }
-  
-      if (keyIsDown(UP_ARROW) && angle > -1.9) {
-        angle -= 0.01;
-        Matter.Body.setAngle(this.body, angle);
-      }
-      
+       
       push();
       translate(pos.x, pos.y);
       rotate(angle);
